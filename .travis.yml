@@ -15,6 +15,7 @@ deploy:
     secret: "$AZURE_WA_PASSWORD"
   site: "may.westus.cloudapp.azure.com"
   app: "docker-ubuntu-vm"
+  edge: true
   on:
     branch: master
   
