@@ -5,7 +5,7 @@ services:
 before_install:
   - docker build -t medaliyou/docker-react -f Dockerfile.dev .
 script:
-  - docker run medaliyou/docker-react npm run test -- --coverage
+  - docker -e CI=true run medaliyou/docker-react npm run test -- --coverage
 
 
 
