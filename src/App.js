@@ -7,6 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
+          <strong>Chlama Rocks !</strong>
           Wohooo my app is finally deployed, Awesome!
           <br/>
           Edit <code>src/App.js</code> and save to reload.
