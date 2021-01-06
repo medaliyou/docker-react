@@ -3,20 +3,14 @@ services:
   - docker
 
 before_install:
-  - docker build -t medaliyou/docker-react -f Dockerfile.dev .
-script:
-  - docker run -e CI=true medaliyou/docker-react npm run test -- --coverage
+  - docker login "$DOCKER_AZURE_REGISTRY" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 
-deploy:
-  provider: azure_web_apps
-  verbose: true
-  username: "$AZURE_WA_USERNAME"
-  password: 
-    secret: "$AZURE_WA_PASSWORD"
-  site: "may.westus.cloudapp.azure.com"
-  app: "docker-ubuntu-vm"
-  edge: true
-  on:
-    branch: master
-  
+  - docker build -t chlampa.azurecr.io/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true chlampa.azurecr.io/docker-react npm run test -- --coverage
+  - docker tag chlampa.azurecr.io/docker-react chlampa.azurecr.io/docker-react:latest
+  - docker push chlampa.azurecr.io/docker-react
+ 
+
 
