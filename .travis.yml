@@ -7,6 +7,14 @@ before_install:
 script:
   - docker run -e CI=true medaliyou/docker-react npm run test -- --coverage
 
-
-
+deploy:
+  provider: azure_web_apps
+  verbose: true
+  username: may
+  password: 
+    secret: "$AZURE_WA_PASSWORD"
+  app: "docker-ubuntu-vm"
+  on:
+    branch: master
+  
 
