@@ -10,9 +10,10 @@ script:
 deploy:
   provider: azure_web_apps
   verbose: true
-  username: may
+  username: "$AZURE_WA_USERNAME"
   password: 
     secret: "$AZURE_WA_PASSWORD"
+  site: "may.westus.cloudapp.azure.com"
   app: "docker-ubuntu-vm"
   on:
     branch: master
